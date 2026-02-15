@@ -173,7 +173,7 @@ func getSGQRObject(sgqrOptions SGQROptions) SGQRRootObject {
 		ID:        "59",
 		Name:      "Merchant Name",
 		MaxLength: 25,
-		Value:     sgqrOptions.CompanyName,
+		Value:     sgqrOptions.MerchantName,
 	}
 
 	// ID: "60", Merchant City - City of the merchant

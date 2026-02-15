@@ -156,7 +156,7 @@ func getSGQRRootObject(payNowQROptions PayNowQROptions) SGQRRootObject {
 		ID:        "59",
 		Name:      "Merchant Name",
 		MaxLength: 25,
-		Value:     payNowQROptions.CompanyName,
+		Value:     payNowQROptions.MerchantName,
 	}
 
 	// ID: "60", Merchant City - City of the merchant

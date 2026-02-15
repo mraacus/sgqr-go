@@ -10,7 +10,7 @@ func TestGeneratePaynowQrString(t *testing.T) {
 		Editable:        false,
 		Expiry:          "20251228",
 		Amount:          "10.50",
-		CompanyName:     "sgqr_test",
+		MerchantName:    "sgqr_test",
 		ReferenceNumber: "REF123",
 	}
 
@@ -29,7 +29,7 @@ func TestGenerateSGQRString(t *testing.T) {
 		Expiry:                   "20251228",
 		Amount:                   "10.50",
 		SGQRID:                   "SGQR1234567890",
-		CompanyName:              "sgqr_test",
+		MerchantName:             "sgqr_test",
 		ReferenceNumber:          "REF123",
 	}
 
