@@ -173,7 +173,7 @@ func getSGQRObject(sgqrOptions SGQROptions) SGQRRootObject {
 		ID:        "59",
 		Name:      "Merchant Name",
 		MaxLength: 25,
-		Value:     sgqrOptions.CompanyName,
+		Value:     sgqrOptions.MerchantName,
 	}
 
 	// ID: "60", Merchant City - City of the merchant
@@ -310,25 +310,4 @@ func GenerateSGQRString(sgqrOptions SGQROptions) (string, error) {
 
 	// Generate the SGQR string
 	return sgqrRootObject.getString()
-}
-
-func validateSGQROptions(sgqrOptions SGQROptions) error {
-	if sgqrOptions.ReceiverType != "mobile" && sgqrOptions.ReceiverType != "uen" {
-		return fmt.Errorf("receiver type must be 'mobile' or 'uen'")
-	}
-	if sgqrOptions.MobileOrUENAccountNumber == "" {
-		return fmt.Errorf("mobile or UEN account number is required")
-	}
-	if sgqrOptions.Expiry != "" {
-		if _, err := time.Parse("20060102", sgqrOptions.Expiry); err != nil {
-			return fmt.Errorf("expiry must be a valid date in the format YYYYMMDD: %v", err)
-		}
-	}
-	if sgqrOptions.Amount == "" {
-		return fmt.Errorf("amount is required")
-	}
-	if sgqrOptions.SGQRID == "" {
-		return fmt.Errorf("SGQR ID is required")
-	}
-	return nil
 }

@@ -156,7 +156,7 @@ func getSGQRRootObject(payNowQROptions PayNowQROptions) SGQRRootObject {
 		ID:        "59",
 		Name:      "Merchant Name",
 		MaxLength: 25,
-		Value:     payNowQROptions.CompanyName,
+		Value:     payNowQROptions.MerchantName,
 	}
 
 	// ID: "60", Merchant City - City of the merchant
@@ -225,19 +225,4 @@ func GeneratePayNowQrString(payNowQROptions PayNowQROptions) (string, error) {
 
 	// Generate the SGQR string
 	return SGQRRootObject.getString()
-}
-
-func validatePayNowQROptions(payNowQROptions PayNowQROptions) error {
-	if payNowQROptions.MobileNumber == "" {
-		return fmt.Errorf("mobile number is required")
-	}
-	if payNowQROptions.Expiry != "" {
-		if _, err := time.Parse("20060102", payNowQROptions.Expiry); err != nil {
-			return fmt.Errorf("expiry must be a valid date in the format YYYYMMDD: %v", err)
-		}
-	}
-	if payNowQROptions.Amount == "" {
-		return fmt.Errorf("amount is required")
-	}
-	return nil
 }
