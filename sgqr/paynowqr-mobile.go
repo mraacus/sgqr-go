@@ -226,18 +226,3 @@ func GeneratePayNowQrString(payNowQROptions PayNowQROptions) (string, error) {
 	// Generate the SGQR string
 	return SGQRRootObject.getString()
 }
-
-func validatePayNowQROptions(payNowQROptions PayNowQROptions) error {
-	if payNowQROptions.MobileNumber == "" {
-		return fmt.Errorf("mobile number is required")
-	}
-	if payNowQROptions.Expiry != "" {
-		if _, err := time.Parse("20060102", payNowQROptions.Expiry); err != nil {
-			return fmt.Errorf("expiry must be a valid date in the format YYYYMMDD: %v", err)
-		}
-	}
-	if payNowQROptions.Amount == "" {
-		return fmt.Errorf("amount is required")
-	}
-	return nil
-}
